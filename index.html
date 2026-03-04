@@ -151,6 +151,86 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 .scope-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:1px solid rgba(255,255,255,.5);}
 #scope-label{position:absolute;bottom:55%;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:10px;letter-spacing:2px;}
 
+/* ══════════════════════════════════════
+   MEDIKIT BUTTON
+══════════════════════════════════════ */
+#btn-medikit{
+  position:absolute;bottom:200px;right:20px;
+  width:62px;height:62px;border-radius:12px;
+  background:rgba(10,50,20,.92);border:2px solid #22dd55;
+  box-shadow:0 0 16px rgba(30,200,80,.4);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:all;cursor:pointer;font-size:24px;color:#fff;
+  transition:transform .1s,box-shadow .1s;
+}
+#btn-medikit:active{transform:scale(.9);}
+#btn-medikit.empty{border-color:#444;box-shadow:none;opacity:.45;}
+#btn-medikit-label{font-size:8px;color:rgba(150,255,180,.85);letter-spacing:1px;margin-top:1px;}
+#medikit-count{
+  position:absolute;top:-6px;right:-6px;
+  width:22px;height:22px;border-radius:50%;
+  background:#22dd55;color:#000;font-size:12px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #000;
+}
+
+/* MEDIKIT USE ANIMATION */
+#medikit-heal-bar{
+  position:absolute;bottom:50%;left:50%;transform:translate(-50%,50%);
+  width:180px;display:none;text-align:center;
+  background:rgba(0,0,0,.7);border:1px solid #22dd55;border-radius:12px;
+  padding:8px 12px;
+}
+#medikit-heal-bg{width:100%;height:8px;background:rgba(255,255,255,.15);border-radius:4px;}
+#medikit-heal-fill{height:100%;background:linear-gradient(90deg,#00cc44,#44ff88);border-radius:4px;width:0%;}
+#medikit-heal-txt{color:#44ff88;font-size:11px;margin-top:5px;letter-spacing:2px;}
+
+/* ══════════════════════════════════════
+   MULTIPLAYER DEATH / RESPAWN SCREEN
+══════════════════════════════════════ */
+#mp-death-screen{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:all;z-index:60;
+  backdrop-filter:blur(4px);
+}
+#mp-death-title{
+  font-size:56px;font-weight:900;letter-spacing:4px;
+  color:#ff3333;text-shadow:0 0 30px rgba(255,50,50,.6);
+  margin-bottom:8px;
+  animation:deathPulse 1.5s infinite alternate;
+}
+@keyframes deathPulse{from{opacity:.8;transform:scale(1);}to{opacity:1;transform:scale(1.04);}}
+#mp-death-stats{color:#888;font-size:16px;margin-bottom:40px;letter-spacing:1px;}
+.mp-death-btn-row{display:flex;gap:20px;}
+.mp-death-btn{
+  padding:16px 36px;border-radius:14px;border:none;cursor:pointer;
+  font-size:16px;font-weight:900;letter-spacing:2px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  min-width:160px;transition:transform .15s,box-shadow .15s;
+  font-family:inherit;
+}
+.mp-death-btn:active{transform:scale(.94);}
+#btn-mp-respawn{
+  background:linear-gradient(135deg,#006633,#004422);
+  color:#aaffcc;border:1.5px solid rgba(80,255,150,.4);
+  box-shadow:0 0 24px rgba(0,200,80,.3);
+}
+#btn-mp-respawn:hover{box-shadow:0 0 36px rgba(0,220,100,.55);transform:translateY(-2px);}
+#btn-mp-back-menu{
+  background:linear-gradient(135deg,#330022,#220011);
+  color:#ffaacc;border:1.5px solid rgba(255,80,150,.3);
+  box-shadow:0 0 20px rgba(200,50,100,.25);
+}
+#btn-mp-back-menu:hover{box-shadow:0 0 32px rgba(255,80,150,.45);transform:translateY(-2px);}
+.mp-death-btn-icon{font-size:26px;}
+.mp-death-btn-sub{font-size:9px;opacity:.7;font-weight:400;}
+#respawn-countdown{
+  margin-top:16px;color:rgba(255,255,255,.4);
+  font-size:13px;letter-spacing:2px;
+}
+
 /* GUN SWITCH KEY HINT */
 #switch-hint{position:absolute;bottom:340px;right:82px;color:rgba(255,255,255,.22);font-size:8px;letter-spacing:1px;pointer-events:none;}
 
@@ -187,7 +267,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 .mp-card-title{color:#aaddff;font-size:13px;letter-spacing:3px;font-weight:bold;margin-bottom:14px;text-align:center;}
 .mp-card p{color:#667;font-size:11px;margin-bottom:10px;text-align:center;}
 
-/* room code display */
 #room-code-box{
   background:rgba(0,0,0,.5);border:1px dashed rgba(80,160,255,.5);
   border-radius:8px;padding:10px 14px;font-size:22px;font-weight:900;
@@ -196,7 +275,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 }
 #copy-hint{color:#445;font-size:10px;text-align:center;margin-bottom:12px;}
 
-/* join input */
 #join-input{
   width:100%;padding:10px 14px;border-radius:8px;
   background:rgba(0,0,0,.5);border:1px solid rgba(80,160,255,.4);
@@ -249,6 +327,9 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 
 /* CONNECTED PLAYERS */
 #connected-badge{position:absolute;top:14px;left:200px;background:rgba(0,50,120,.7);color:#aaddff;padding:3px 10px;border-radius:12px;font-size:11px;display:none;border:1px solid rgba(50,120,255,.4);}
+
+/* HEAL FLASH */
+#heal-flash{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,255,100,.18) 0%,transparent 70%);opacity:0;pointer-events:none;transition:opacity .15s;}
 </style>
 </head>
 <body>
@@ -285,7 +366,21 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
   <div id="killfeed"></div>
   <div id="zone-warn">&#x26A0; SAFE ZONE SHRINKING!</div>
   <div id="dmg"></div>
+  <div id="heal-flash"></div>
   <div id="rl-wrap"><div id="rl-bg"><div id="rl-fill"></div></div><div id="rl-txt">RELOADING...</div></div>
+
+  <!-- MEDIKIT HEAL BAR -->
+  <div id="medikit-heal-bar">
+    <div id="medikit-heal-bg"><div id="medikit-heal-fill"></div></div>
+    <div id="medikit-heal-txt">💉 HEALING...</div>
+  </div>
+
+  <!-- MEDIKIT BUTTON -->
+  <div id="btn-medikit" onclick="useMedikit()" title="Use Medikit [H]">
+    <span>💉</span>
+    <div id="btn-medikit-label">MEDIKIT</div>
+    <div id="medikit-count">2</div>
+  </div>
 
   <!-- MOBILE CONTROLS -->
   <div id="joy-left-area"><div id="joy-left-base"></div><div id="joy-left-knob"></div></div>
@@ -337,7 +432,26 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
     <div id="scope-label">&#x00D7;4</div>
   </div>
 
-  <div id="pc-hint">WASD Move | Mouse Aim | Click Shoot | R Reload | Tab Switch Gun | RClick/Q Scope | Space Jump</div>
+  <div id="pc-hint">WASD Move | Mouse Aim | Click Shoot | R Reload | H Medikit | Tab Switch Gun | RClick/Q Scope | Space Jump</div>
+</div>
+
+<!-- ═══ MULTIPLAYER DEATH SCREEN ═══ -->
+<div id="mp-death-screen">
+  <div id="mp-death-title">ELIMINATED</div>
+  <div id="mp-death-stats">Kills: <span id="mp-death-kills">0</span></div>
+  <div class="mp-death-btn-row">
+    <button class="mp-death-btn" id="btn-mp-respawn" onclick="mpRespawn()">
+      <span class="mp-death-btn-icon">&#x1F504;</span>
+      RESPAWN
+      <span class="mp-death-btn-sub">Same room mein wapas</span>
+    </button>
+    <button class="mp-death-btn" id="btn-mp-back-menu" onclick="mpBackToLobby()">
+      <span class="mp-death-btn-icon">&#x1F3E0;</span>
+      BACK TO MENU
+      <span class="mp-death-btn-sub">Multiplayer lobby</span>
+    </button>
+  </div>
+  <div id="respawn-countdown"></div>
 </div>
 
 <!-- ═══ AUTH SCREEN ═══ -->
@@ -345,27 +459,22 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
   <div id="auth-logo">FREEZONE</div>
   <div id="auth-sub">BATTLE ROYALE</div>
   <div class="auth-card">
-    <!-- TABS -->
     <div class="auth-tabs">
       <button class="auth-tab active" id="tab-login"   onclick="authSwitchTab('login')">LOGIN</button>
       <button class="auth-tab"        id="tab-signup"  onclick="authSwitchTab('signup')">SIGN UP</button>
     </div>
-
-    <!-- LOGIN FORM -->
     <div id="form-login">
       <input class="auth-field" id="li-email"    type="email"    placeholder="Email address" autocomplete="email"/>
       <input class="auth-field" id="li-password" type="password" placeholder="Password"      autocomplete="current-password"/>
-      <button class="auth-btn" id="auth-login-btn" onclick="authLogin()">▶ LOGIN</button>
+      <button class="auth-btn" id="auth-login-btn" onclick="authLogin()">&#x25B6; LOGIN</button>
       <div id="li-msg" class="auth-err"></div>
     </div>
-
-    <!-- SIGNUP FORM -->
     <div id="form-signup" style="display:none;">
       <input class="auth-field" id="su-email"    type="email"    placeholder="Email address"        autocomplete="email"/>
       <input class="auth-field" id="su-password" type="password" placeholder="Set password (min 6)" autocomplete="new-password"/>
       <input class="auth-field" id="su-username" type="text"     placeholder="Username (max 12)"    maxlength="12"
              oninput="this.value=this.value.replace(/[^a-zA-Z0-9_]/g,'').slice(0,12).toUpperCase()"/>
-      <button class="auth-btn" id="auth-signup-btn" onclick="authSignup()">✚ CREATE ACCOUNT</button>
+      <button class="auth-btn" id="auth-signup-btn" onclick="authSignup()">&#x271A; CREATE ACCOUNT</button>
       <div id="su-msg" class="auth-err"></div>
     </div>
   </div>
@@ -403,7 +512,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 
   <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;max-width:700px;">
 
-    <!-- CREATE ROOM -->
     <div class="mp-card" style="min-width:240px;flex:1;">
       <div class="mp-card-title">&#x2795; CREATE ROOM</div>
       <p style="color:#446;font-size:12px;margin-bottom:8px;">Click below to generate your room</p>
@@ -416,7 +524,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
       </button>
     </div>
 
-    <!-- JOIN ROOM -->
     <div class="mp-card" style="min-width:240px;flex:1;">
       <div class="mp-card-title">&#x1F50D; JOIN ROOM</div>
       <p style="color:#446;font-size:12px;margin-bottom:8px;">Enter code from friend or click a room below</p>
@@ -430,7 +537,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
       <div id="join-status" style="color:#667;font-size:12px;text-align:center;margin-top:6px;min-height:16px;"></div>
     </div>
 
-    <!-- ACTIVE ROOMS -->
     <div class="mp-card" style="min-width:240px;flex:1;">
       <div class="mp-card-title" style="display:flex;justify-content:space-between;align-items:center;">
         <span>&#x1F30D; ACTIVE ROOMS</span>
@@ -444,7 +550,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 
   </div>
 
-  <!-- BACK BUTTON — big and clear -->
   <button onclick="backToMain()"
     style="margin-top:18px;padding:10px 32px;background:rgba(40,10,10,.8);
            border:1.5px solid rgba(255,80,80,.4);color:#ff8888;border-radius:10px;
@@ -462,7 +567,6 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// Dynamically load PeerJS with fallback CDNs
 (function loadPeer() {
   const urls = [
     'https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js',
@@ -471,11 +575,7 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
   ];
   let idx = 0;
   function tryNext() {
-    if(idx >= urls.length) {
-      console.warn('PeerJS failed to load — multiplayer disabled');
-      window._peerJSFailed = true;
-      return;
-    }
+    if(idx >= urls.length) { window._peerJSFailed = true; return; }
     const s = document.createElement('script');
     s.src = urls[idx++];
     s.onload = () => { window._peerJSLoaded = true; };
@@ -490,10 +590,9 @@ body{background:#000;overflow:hidden;font-family:'Segoe UI',sans-serif;touch-act
 //  FREEZONE FPS — Single Player + P2P Multiplayer Training Mode
 // ================================================================
 
-// ── GAME STATE ──
 let scene, camera, renderer, clock;
 let gameStarted = false, gameOver = false;
-let gameMode = null; // 'single' | 'multi'
+let gameMode = null;
 
 const player = { hp:100, shield:70, ammo:30, ammoRes:120, kills:0, alive:true };
 const keys = {};
@@ -508,9 +607,76 @@ let bullets=[], eBullets=[], particles=[], enemies=[];
 let obstacles=[];
 let weaponGroup;
 
-// ================================================================
+// ═══════════════════════════════════════
+//  MEDIKIT SYSTEM
+// ═══════════════════════════════════════
+let medikitCount = 2;           // Starting medikits
+let usingMedikit = false;       // Animation lock
+let medikitUseT  = 0;           // Progress (0→1 in 2s)
+const MEDIKIT_USE_TIME = 2.0;   // Seconds to use
+
+function updateMedikitUI() {
+  const btn   = document.getElementById('btn-medikit');
+  const count = document.getElementById('medikit-count');
+  count.textContent = medikitCount;
+  btn.classList.toggle('empty', medikitCount <= 0);
+}
+
+function useMedikit() {
+  if(!gameStarted || !player.alive) return;
+  if(usingMedikit)  return;          // Already using
+  if(medikitCount <= 0) {
+    // No medikits — flash button
+    const btn = document.getElementById('btn-medikit');
+    btn.style.borderColor = '#ff3333';
+    setTimeout(()=>btn.style.borderColor = medikitCount>0?'#22dd55':'#444', 400);
+    return;
+  }
+  if(player.hp >= 100) return;       // Already full
+  usingMedikit = true;
+  medikitUseT  = 0;
+  document.getElementById('medikit-heal-bar').style.display = 'block';
+  document.getElementById('medikit-heal-fill').style.width  = '0%';
+  // Stop reload if in progress
+  if(reloading){ reloading=false; document.getElementById('rl-wrap').style.display='none'; }
+}
+
+function cancelMedikit() {
+  if(!usingMedikit) return;
+  usingMedikit = false;
+  document.getElementById('medikit-heal-bar').style.display = 'none';
+}
+
+function updateMedikit(dt) {
+  if(!usingMedikit) return;
+  // Cancel if player moves fast (optional: uncomment below)
+  // if(Math.abs(moveVec.x)>.3||Math.abs(moveVec.y)>.3){ cancelMedikit(); return; }
+  medikitUseT += dt / MEDIKIT_USE_TIME;
+  document.getElementById('medikit-heal-fill').style.width = (Math.min(medikitUseT,1)*100)+'%';
+  if(medikitUseT >= 1) {
+    // HEALED!
+    medikitCount--;
+    player.hp     = 100;
+    player.shield = Math.min(100, player.shield + 30);
+    usingMedikit  = false;
+    document.getElementById('medikit-heal-bar').style.display = 'none';
+    updateMedikitUI();
+    updateHUD();
+    flashHeal();
+    playSound('medikit_use');
+    addKillFeed('💉 Healed to full HP!');
+  }
+}
+
+function flashHeal() {
+  const h = document.getElementById('heal-flash');
+  h.style.opacity = '1';
+  setTimeout(()=>h.style.opacity='0', 400);
+}
+
+// ═══════════════════════════════════════
 //  MULTIPLAYER STATE
-// ================================================================
+// ═══════════════════════════════════════
 let myPeer = null, myPeerId = null, myRoomCode = null;
 let peerConnections = {};
 let remotePlayers   = {};
@@ -519,7 +685,10 @@ let updateInterval = null, pingStart = {};
 const PLAYER_COLORS = [0x2255aa,0x228833,0x882222,0x886622,0x553388,0x226688];
 let colorIdx = 0;
 
-// ── USERNAME ──
+// Respawn state
+let _respawnRoomCode = null;   // saved room code for rejoining
+let _respawnIsHost   = false;
+
 const UN_KEY  = 'fz_username';
 const AUTH_KEY = 'fz_users_v1';
 const SESSION_KEY = 'fz_session';
@@ -550,7 +719,6 @@ function authLogin() {
   const users = _getUsers();
   if(!users[email]) { msg.textContent = '❌ No account found with this email'; return; }
   if(users[email].password !== btoa(pass)) { msg.textContent = '❌ Wrong password'; return; }
-  // Success
   myUsername = users[email].username;
   localStorage.setItem(SESSION_KEY, email);
   _enterGame();
@@ -562,20 +730,14 @@ function authSignup() {
   const uname = document.getElementById('su-username').value.trim().toUpperCase();
   const msg   = document.getElementById('su-msg');
   msg.className = 'auth-err';
-
   if(!email || !pass || !uname) { msg.textContent = '⚠ Fill in all fields'; return; }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = '⚠ Enter a valid email'; return; }
   if(pass.length < 6) { msg.textContent = '⚠ Password must be at least 6 characters'; return; }
   if(uname.length < 2) { msg.textContent = '⚠ Username must be at least 2 characters'; return; }
-
   const users = _getUsers();
-  // Check duplicate email
   if(users[email]) { msg.textContent = '❌ This email is already registered'; return; }
-  // Check duplicate username
   const nameTaken = Object.values(users).some(u => u.username === uname);
   if(nameTaken) { msg.textContent = '❌ Username "' + uname + '" is already taken'; return; }
-
-  // Save account
   users[email] = { username: uname, password: btoa(pass), createdAt: Date.now() };
   _saveUsers(users);
   localStorage.setItem(SESSION_KEY, email);
@@ -597,7 +759,6 @@ function authLogout() {
   location.reload();
 }
 
-// Auto-login if session exists
 window.addEventListener('load', () => {
   const sess = localStorage.getItem(SESSION_KEY);
   if(sess) {
@@ -608,13 +769,12 @@ window.addEventListener('load', () => {
       return;
     }
   }
-  // No session → show auth screen
   document.getElementById('authscreen').style.display = 'flex';
   document.getElementById('startscreen').style.display = 'none';
 });
 
 // ================================================================
-//  PEER INIT — host creates room with custom short code
+//  PEER INIT
 // ================================================================
 function initPeerWithCode() {
   document.getElementById('room-code-box').textContent = '......';
@@ -631,7 +791,6 @@ function _doCreateRoom() {
   const code = 'FZ' + Math.random().toString(36).slice(2,6).toUpperCase();
   if(myPeer && !myPeer.destroyed) myPeer.destroy();
   document.getElementById('mp-status').textContent = 'Creating room...';
-
   myPeer = new Peer(code, {
     host:'0.peerjs.com', port:443, path:'/', secure:true,
     config:{ iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}] }
@@ -659,10 +818,8 @@ function setupConn(conn, weAreHost) {
   peerConnections[pid] = conn;
   conn.on('open', () => {
     if(weAreHost) {
-      // Tell joiner about existing peers
       const peers = Object.keys(peerConnections).filter(p => p !== pid);
       conn.send({type:'welcome', peers});
-      // Tell others about new peer
       Object.values(peerConnections).forEach(c => { if(c !== conn && c.open) c.send({type:'peer_joined', peerId:pid}); });
     }
     updateLobbyPlayerCount();
@@ -673,10 +830,9 @@ function setupConn(conn, weAreHost) {
     delete peerConnections[pid];
     if(gameStarted) removeRemotePlayer(pid);
     updateLobbyPlayerCount();
-    // Update room player count in LS
     if(myRoomCode && isHost) {
       const count = Object.keys(peerConnections).length + 1;
-      if(count <= 1 && gameStarted) _removeRoomFromLS(myRoomCode); // host alone → remove
+      if(count <= 1 && gameStarted) _removeRoomFromLS(myRoomCode);
       else if(myRoomCode) _storeRoomInLS(myRoomCode, count);
     }
   });
@@ -704,18 +860,20 @@ function handlePeerData(data, fromId) {
     case 'pos':
       updateRemotePlayer(fromId, data);
       break;
-    // Remote player fired — spawn visual bullet (we dont take damage from this, shooter does hitscan)
     case 'bullet':
       if(gameStarted && scene) spawnRemoteBulletVisual(data);
       break;
-    // Shooter's hitscan confirmed WE got hit
     case 'hit':
       if(player.alive) {
+        // Cancel healing if hit
+        cancelMedikit();
         player.hp -= (data.dmg || 20);
         player.shield = Math.max(0, player.shield - 4);
         flashDmg();
         if(player.hp <= 0) {
-          killPlayer();
+          // MP-style death — show respawn screen instead of game over
+          player.alive = false;
+          showMpDeathScreen();
           if(peerConnections[fromId] && peerConnections[fromId].open)
             peerConnections[fromId].send({type:'kill_confirm'});
         }
@@ -724,7 +882,10 @@ function handlePeerData(data, fromId) {
       break;
     case 'kill_confirm':
       player.kills++;
-      addKillFeed('Enemy Player');
+      // Earn 1 medikit per kill!
+      medikitCount++;
+      updateMedikitUI();
+      addKillFeed('🏆 Kill! Got 1 Medikit!');
       playSound('kill');
       updateHUD();
       break;
@@ -749,6 +910,123 @@ function updateLobbyPlayerCount() {
 }
 
 // ================================================================
+//  MULTIPLAYER DEATH — RESPAWN / BACK
+// ================================================================
+function showMpDeathScreen() {
+  gameOver = true;
+  // Save room info for respawn
+  _respawnRoomCode = myRoomCode;
+  _respawnIsHost   = isHost;
+  // Exit pointer lock
+  if(document.pointerLockElement) document.exitPointerLock();
+  // Show death screen
+  document.getElementById('mp-death-kills').textContent = player.kills;
+  document.getElementById('mp-death-screen').style.display = 'flex';
+  // Countdown hint
+  const cd = document.getElementById('respawn-countdown');
+  cd.textContent = '';
+}
+
+function mpRespawn() {
+  // Hide death screen
+  document.getElementById('mp-death-screen').style.display = 'none';
+  // Keep existing peer connections — just re-init player state
+  _doRespawn();
+}
+
+function _doRespawn() {
+  // Reset player
+  player.hp = 100; player.shield = 70;
+  player.alive = true;
+  gameOver = false;
+  // Reset ammo
+  gunAmmo    = [30, 5, 8];
+  gunAmmoRes = [120, 25, 40];
+  currentGunIdx = 0; currentGun = GUNS[0];
+  player.ammo    = gunAmmo[0];
+  player.ammoRes = gunAmmoRes[0];
+  // Keep kills & medikits (earned through gameplay)
+  // Reset weapon state
+  reloading = false; shooting = false; isScoped = false;
+  shootCooldown = 0; jumpVel = 0; grounded = true; crouching = false;
+  usingMedikit = false;
+  document.getElementById('rl-wrap').style.display = 'none';
+  document.getElementById('medikit-heal-bar').style.display = 'none';
+  // Respawn at random position
+  camera.position.set(
+    (Math.random() - 0.5) * 60,
+    1.7,
+    (Math.random() - 0.5) * 60
+  );
+  cameraYaw = Math.random() * Math.PI * 2;
+  camera.fov = normalFOV; camera.updateProjectionMatrix();
+  // Reset scope
+  if(isScoped) {
+    document.getElementById('scope-overlay').style.display = 'none';
+    document.getElementById('xhair').style.display = 'block';
+    weaponGroup.visible = true;
+    isScoped = false;
+  }
+  // Rebuild weapon for correct gun
+  buildWeapon();
+  document.querySelectorAll('.gslot').forEach((el,i)=>el.classList.toggle('active',i===0));
+  updateHUD();
+  updateMedikitUI();
+  // Flash green heal to show spawned
+  flashHeal();
+  addKillFeed('✅ Respawned!');
+  // Re-lock pointer
+  setTimeout(() => {
+    const cv = document.getElementById('gameCanvas');
+    if(cv && gameStarted) cv.requestPointerLock();
+  }, 300);
+}
+
+function mpBackToLobby() {
+  // Hide death screen
+  document.getElementById('mp-death-screen').style.display = 'none';
+  // Full cleanup and go to MP lobby
+  _fullCleanup();
+  // Show MP lobby
+  window.showMpLobby();
+}
+
+function _fullCleanup() {
+  gameStarted = false; gameOver = false; gameMode = null;
+  isScoped = false;
+  camera && (camera.fov = normalFOV) && camera.updateProjectionMatrix && camera.updateProjectionMatrix();
+  document.getElementById('scope-overlay').style.display = 'none';
+  document.getElementById('xhair').style.display = 'block';
+  player.hp = 100; player.shield = 70; player.kills = 0; player.alive = true;
+  gunAmmo = [30,5,8]; gunAmmoRes = [120,25,40];
+  currentGunIdx = 0; currentGun = GUNS[0];
+  player.ammo = gunAmmo[0]; player.ammoRes = gunAmmoRes[0];
+  zoneRadius = 80; zoneShrinking = false;
+  bullets = []; eBullets = []; particles = []; enemies = [];
+  reloading = false; grounded = true; crouching = false;
+  usingMedikit = false; medikitCount = 2;
+  if(document.pointerLockElement) document.exitPointerLock();
+  document.getElementById('mp-tag').style.display = 'none';
+  document.getElementById('connected-badge').style.display = 'none';
+  document.getElementById('ping-box').style.display = 'none';
+  document.getElementById('alive-wrap').style.display = 'block';
+  document.getElementById('zone-warn').style.display = 'none';
+  document.getElementById('rl-wrap').style.display = 'none';
+  document.getElementById('endscreen').style.display = 'none';
+  document.getElementById('medikit-heal-bar').style.display = 'none';
+  if(scene) { while(scene.children.length>0) scene.remove(scene.children[0]); scene = null; }
+  if(renderer) { renderer.dispose(); }
+  if(myRoomCode) _removeRoomFromLS(myRoomCode);
+  if(updateInterval) { clearInterval(updateInterval); updateInterval = null; }
+  Object.values(peerConnections).forEach(c => c.close && c.close());
+  Object.keys(peerConnections).forEach(k => delete peerConnections[k]);
+  Object.keys(remotePlayers).forEach(k => delete remotePlayers[k]);
+  myRoomCode = null; myPeerId = null;
+  if(myPeer && !myPeer.destroyed) { myPeer.destroy(); myPeer = null; }
+  isHost = false; hostConn = null;
+}
+
+// ================================================================
 //  HOST START / BACK
 // ================================================================
 function hostStartGame() {
@@ -757,22 +1035,15 @@ function hostStartGame() {
 
   function _start() {
     isHost = true;
-    // Register room in LS NOW (game is starting)
     if(myRoomCode) _storeRoomInLS(myRoomCode, Object.keys(peerConnections).length + 1);
-    // Tell any already-connected peers to start
     Object.values(peerConnections).forEach(c => { if(c.open) c.send({type:'start_game'}); });
     gameMode = 'multi';
     document.getElementById('mpscreen').style.display = 'none';
     initGame();
   }
 
-  // If peer already created (someone joined while waiting), start immediately
-  if(myPeer && !myPeer.destroyed && myPeerId) {
-    _start();
-    return;
-  }
+  if(myPeer && !myPeer.destroyed && myPeerId) { _start(); return; }
 
-  // Create peer now
   let waited = 0;
   const t = setInterval(() => {
     waited += 300;
@@ -838,25 +1109,19 @@ function sendPing() {
 }
 
 // ================================================================
-//  REMOTE PLAYER MESH + UPDATE
+//  REMOTE PLAYER MESH
 // ================================================================
 function makeNameTagSprite(name, color) {
   const canvas = document.createElement('canvas');
-  canvas.width  = 256; canvas.height = 64;
+  canvas.width = 256; canvas.height = 64;
   const ctx = canvas.getContext('2d');
-  // Background pill
   ctx.fillStyle = 'rgba(0,0,0,0.6)';
-  roundRect(ctx, 4, 12, 248, 40, 10);
-  ctx.fill();
-  // Color bar on left
+  roundRect(ctx, 4, 12, 248, 40, 10); ctx.fill();
   ctx.fillStyle = '#' + color.toString(16).padStart(6,'0');
-  roundRect(ctx, 4, 12, 8, 40, 4);
-  ctx.fill();
-  // Name text
+  roundRect(ctx, 4, 12, 8, 40, 4); ctx.fill();
   ctx.fillStyle = '#ffffff';
-  ctx.font      = 'bold 22px Arial';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
+  ctx.font = 'bold 22px Arial';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText(name.slice(0,12), 132, 32);
   const tex = new THREE.CanvasTexture(canvas);
   const mat = new THREE.SpriteMaterial({map: tex, transparent: true, depthTest: false});
@@ -868,16 +1133,10 @@ function makeNameTagSprite(name, color) {
 
 function roundRect(ctx, x, y, w, h, r) {
   ctx.beginPath();
-  ctx.moveTo(x+r, y);
-  ctx.lineTo(x+w-r, y);
-  ctx.quadraticCurveTo(x+w, y, x+w, y+r);
-  ctx.lineTo(x+w, y+h-r);
-  ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
-  ctx.lineTo(x+r, y+h);
-  ctx.quadraticCurveTo(x, y+h, x, y+h-r);
-  ctx.lineTo(x, y+r);
-  ctx.quadraticCurveTo(x, y, x+r, y);
-  ctx.closePath();
+  ctx.moveTo(x+r, y); ctx.lineTo(x+w-r, y); ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+  ctx.lineTo(x+w, y+h-r); ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  ctx.lineTo(x+r, y+h); ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+  ctx.lineTo(x, y+r); ctx.quadraticCurveTo(x, y, x+r, y); ctx.closePath();
 }
 
 function makeRemotePlayerMesh(color, name) {
@@ -892,12 +1151,9 @@ function makeRemotePlayerMesh(color, name) {
   [-.15,.15].forEach(ox=>{const l=new THREE.Mesh(new THREE.BoxGeometry(.22,.7,.3),tr);l.position.set(ox,.45,0);g.add(l);});
   [-.42,.42].forEach(ox=>{const a=new THREE.Mesh(new THREE.BoxGeometry(.2,.65,.25),ml);a.position.set(ox,1.1,0);g.add(a);});
   const egun=new THREE.Mesh(new THREE.BoxGeometry(.06,.08,.45),new THREE.MeshLambertMaterial({color:0x111111})); egun.position.set(.55,1.1,-.2); g.add(egun);
-  // HP bar
   const hbBg=new THREE.Mesh(new THREE.PlaneGeometry(.8,.1),new THREE.MeshBasicMaterial({color:0x001133,side:THREE.DoubleSide,depthTest:false})); hbBg.position.y=2.35; g.add(hbBg);
   const hbFill=new THREE.Mesh(new THREE.PlaneGeometry(.78,.08),new THREE.MeshBasicMaterial({color:0x00aaff,side:THREE.DoubleSide,depthTest:false})); hbFill.position.set(0,2.35,.01); g.add(hbFill);
-  // Nametag sprite
-  const colorHex = color;
-  const nameSprite = makeNameTagSprite(name || 'PLAYER', colorHex);
+  const nameSprite = makeNameTagSprite(name || 'PLAYER', color);
   g.add(nameSprite);
   return {group:g, hbFill, nameSprite};
 }
@@ -913,7 +1169,6 @@ function updateRemotePlayer(pid, data) {
     const cc = document.getElementById('conn-count'); if(cc) cc.textContent = Object.keys(remotePlayers).length + 1;
   }
   const rp = remotePlayers[pid];
-  // Update nametag if name changed
   if(data.name && data.name !== rp.name) {
     rp.name = data.name;
     if(rp.nameSprite) {
@@ -927,7 +1182,6 @@ function updateRemotePlayer(pid, data) {
   rp.mesh.rotation.y = data.yaw + Math.PI;
   rp.hp = data.hp; rp.kills = data.kills; rp.lastSeen = Date.now();
   const r = Math.max(0, data.hp / 100); rp.hbFill.scale.x = r; rp.hbFill.position.x = -(1-r)*.39;
-  // Nametag always faces camera
   if(rp.nameSprite) rp.nameSprite.quaternion.copy(camera.quaternion);
 }
 
@@ -939,7 +1193,6 @@ function removeRemotePlayer(pid) {
   }
 }
 
-// Visual-only remote bullet (no damage — damage handled by shooter hitscan below)
 function spawnRemoteBulletVisual(data) {
   const pos = new THREE.Vector3(data.ox, data.oy, data.oz);
   const dir = new THREE.Vector3(data.dx, data.dy, data.dz).normalize();
@@ -947,21 +1200,19 @@ function spawnRemoteBulletVisual(data) {
   b.mesh.position.copy(pos); scene.add(b.mesh); bullets.push(b);
 }
 
-// Called after local player shoots in MP — check if any remote player was hit (hitscan)
 function checkPvPHit(shootOrigin, shootDir, damage) {
   Object.entries(remotePlayers).forEach(([pid, rp]) => {
     if(!rp.mesh) return;
-    const head  = rp.mesh.position.clone().add(new THREE.Vector3(0, 1.7, 0));
-    const body  = rp.mesh.position.clone().add(new THREE.Vector3(0, 1.0, 0));
-    const toH   = head.clone().sub(shootOrigin);
-    const toB   = body.clone().sub(shootOrigin);
+    const head = rp.mesh.position.clone().add(new THREE.Vector3(0, 1.7, 0));
+    const body = rp.mesh.position.clone().add(new THREE.Vector3(0, 1.0, 0));
+    const toH  = head.clone().sub(shootOrigin);
+    const toB  = body.clone().sub(shootOrigin);
     const distH = toH.length(), distB = toB.length();
     const dotH  = shootDir.clone().dot(toH.normalize());
     const dotB  = shootDir.clone().dot(toB.normalize());
     const thresh = 0.94;
     if((dotH >= thresh && distH < 60) || (dotB >= thresh && distB < 60)) {
-      showHitMark();
-      playSound('hit');
+      showHitMark(); playSound('hit');
       const hitPos = shootOrigin.clone().add(shootDir.clone().multiplyScalar(Math.min(distH, distB) * 0.9));
       spawnHitFx(hitPos);
       if(peerConnections[pid] && peerConnections[pid].open)
@@ -970,7 +1221,6 @@ function checkPvPHit(shootOrigin, shootDir, damage) {
   });
 }
 
-// Cleanup stale remote players
 setInterval(() => {
   const now = Date.now();
   Object.entries(remotePlayers).forEach(([pid, rp]) => {
@@ -979,8 +1229,7 @@ setInterval(() => {
 }, 3000);
 
 // ================================================================
-//  ACTIVE ROOMS — localStorage (same device tabs) +
-//  BroadcastChannel (cross-tab) for room discovery
+//  ACTIVE ROOMS (localStorage + BroadcastChannel)
 // ================================================================
 const LS_KEY = 'fzroomsv2';
 let _bcChannel = null;
@@ -1008,24 +1257,16 @@ function refreshRoomList() {
   const listEl = document.getElementById('active-rooms-list');
   const stEl   = document.getElementById('room-list-status');
   if(!listEl || !stEl) return;
-  stEl.textContent = '🔄 Searching...';
-  listEl.innerHTML = '';
-
-  // Load from localStorage
+  stEl.textContent = '🔄 Searching...'; listEl.innerHTML = '';
   let rooms = [];
   try {
     const all = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
-    const now = Date.now();
-    // Prune rooms older than 3 minutes
-    let changed = false;
+    const now = Date.now(); let changed = false;
     Object.keys(all).forEach(k => { if(now - all[k].ts > 180000) { delete all[k]; changed = true; } });
     if(changed) localStorage.setItem(LS_KEY, JSON.stringify(all));
     rooms = Object.values(all);
   } catch(e) {}
-
   _renderRooms(rooms);
-
-  // Also listen for BC updates for 4 seconds
   if(_bcChannel) {
     const h = e => {
       if(e.data && e.data.type === 'update') {
@@ -1051,7 +1292,7 @@ function _renderRooms(rooms) {
   const active = rooms.filter(r => r.players >= 1);
   if(active.length === 0) {
     stEl.textContent = 'No rooms found — ask friend to share code';
-    listEl.innerHTML  = '<div style="color:#334;font-size:11px;text-align:center;padding:10px;">Active rooms from other devices won\'t show here.<br>Use the room code your friend shares.</div>';
+    listEl.innerHTML = '<div style="color:#334;font-size:11px;text-align:center;padding:10px;">Active rooms from other devices won\'t show here.<br>Use the room code your friend shares.</div>';
     return;
   }
   stEl.textContent = active.length + ' room(s) found';
@@ -1105,24 +1346,16 @@ function buildMap() {
   sun.shadow.camera.right=sun.shadow.camera.top=150;
   scene.add(sun);
   scene.add(new THREE.AmbientLight(0x8899cc, .6));
-
-  // Ground
   const gr = new THREE.Mesh(new THREE.PlaneGeometry(400,400), new THREE.MeshLambertMaterial({color:0x5a8a3a}));
   gr.rotation.x=-Math.PI/2; gr.receiveShadow=true; scene.add(gr);
-
-  // Roads
   mkBox(0,.01,0,10,.04,200,0x888877);
   mkBox(0,.01,0,200,.04,10,0x888877);
-
-  // Buildings
   [[20,20,7,9,7],[25,30,8,12,6],[-40,-20,6,8,9],[-35,-40,9,10,8],
    [15,-50,7,7,7],[-50,10,8,14,8],[60,30,10,8,7],[-20,60,6,9,6],
    [35,55,8,10,8],[-60,-30,7,8,9],[50,-60,9,7,7],[25,-30,6,11,6],
    [-40,50,8,8,7],[70,-10,7,9,8],[-70,20,9,10,7],[-15,-25,6,7,6],
    [45,15,7,6,7],[-30,15,5,8,5],[10,40,6,9,6],[-55,45,7,7,7]
   ].forEach(([bx,bz,bw,bh,bd]) => mkBuilding(bx,bz,bw,bh,bd));
-
-  // Trees
   for(let i=0;i<60;i++){
     const tx=(Math.random()-.5)*170, tz=(Math.random()-.5)*170;
     if(Math.abs(tx)<6&&Math.abs(tz)<6) continue;
@@ -1149,13 +1382,9 @@ function buildMap() {
     mkBox(fx,.75,fz,2.5,1.5,.3,0x8B6914);
     obstacles.push({x:fx,z:fz,hw:1.3,hd:.45});
   });
-
-  // Water
   const wm = new THREE.MeshLambertMaterial({color:0x2266aa,transparent:true,opacity:.75});
   const wt = new THREE.Mesh(new THREE.PlaneGeometry(35,25),wm);
   wt.rotation.x=-Math.PI/2; wt.position.set(-62,.12,-60); scene.add(wt);
-
-  // Zone (Single Player only shows, MP has no zone)
   if(gameMode === 'single') {
     const zGeo = new THREE.RingGeometry(zoneRadius,160,128);
     const zMat = new THREE.MeshBasicMaterial({color:0x1155ff,transparent:true,opacity:.28,side:THREE.DoubleSide,depthWrite:false});
@@ -1204,10 +1433,9 @@ function hasCollision(nx,nz){
 }
 
 // ================================================================
-//  SOUND SYSTEM (Web Audio API — no files needed)
+//  SOUND SYSTEM
 // ================================================================
 let audioCtx = null;
-
 function getAudioCtx() {
   if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
   if(audioCtx.state === 'suspended') audioCtx.resume();
@@ -1218,141 +1446,100 @@ function playSound(type) {
   try {
     const ctx = getAudioCtx();
     const now = ctx.currentTime;
-
     switch(type) {
-
-      case 'shoot_ar': { // M4A1 — short sharp crack
-        const buf = ctx.createBuffer(1, ctx.sampleRate * 0.15, ctx.sampleRate);
-        const d = buf.getChannelData(0);
-        for(let i=0;i<d.length;i++){
-          const t=i/ctx.sampleRate;
-          d[i]=(Math.random()*2-1)*Math.exp(-t*60)*(t<0.005?t/0.005:1);
-        }
+      case 'shoot_ar': {
+        const buf=ctx.createBuffer(1,ctx.sampleRate*.15,ctx.sampleRate);
+        const d=buf.getChannelData(0);
+        for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;d[i]=(Math.random()*2-1)*Math.exp(-t*60)*(t<0.005?t/0.005:1);}
         const src=ctx.createBufferSource(); src.buffer=buf;
         const g=ctx.createGain(); g.gain.setValueAtTime(.55,now); g.gain.exponentialRampToValueAtTime(.001,now+.15);
         const dist=ctx.createWaveShaper();
         const curve=new Float32Array(256);
-        for(let i=0;i<256;i++){ const x=i*2/256-1; curve[i]=x<0?-Math.pow(-x,.6):Math.pow(x,.6); }
+        for(let i=0;i<256;i++){const x=i*2/256-1;curve[i]=x<0?-Math.pow(-x,.6):Math.pow(x,.6);}
         dist.curve=curve;
         src.connect(dist); dist.connect(g); g.connect(ctx.destination); src.start(now);
-        // Mechanical click
         const osc=ctx.createOscillator(); const gk=ctx.createGain();
         osc.frequency.setValueAtTime(220,now); osc.frequency.exponentialRampToValueAtTime(80,now+.05);
         gk.gain.setValueAtTime(.3,now); gk.gain.exponentialRampToValueAtTime(.001,now+.06);
         osc.connect(gk); gk.connect(ctx.destination); osc.start(now); osc.stop(now+.06);
         break;
       }
-
-      case 'shoot_sniper': { // AWM — loud boom
+      case 'shoot_sniper': {
         const buf=ctx.createBuffer(1,ctx.sampleRate*.4,ctx.sampleRate);
         const d=buf.getChannelData(0);
-        for(let i=0;i<d.length;i++){
-          const t=i/ctx.sampleRate;
-          d[i]=(Math.random()*2-1)*Math.exp(-t*18)*(t<.003?t/.003:1);
-        }
+        for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;d[i]=(Math.random()*2-1)*Math.exp(-t*18)*(t<.003?t/.003:1);}
         const src=ctx.createBufferSource(); src.buffer=buf;
         const g=ctx.createGain(); g.gain.setValueAtTime(.9,now); g.gain.exponentialRampToValueAtTime(.001,now+.4);
-        // Low boom filter
         const lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=900;
         src.connect(lp); lp.connect(g); g.connect(ctx.destination); src.start(now);
         break;
       }
-
-      case 'shoot_shotgun': { // SPAS-12 — big blast
+      case 'shoot_shotgun': {
         const buf=ctx.createBuffer(1,ctx.sampleRate*.25,ctx.sampleRate);
         const d=buf.getChannelData(0);
-        for(let i=0;i<d.length;i++){
-          const t=i/ctx.sampleRate;
-          d[i]=(Math.random()*2-1)*Math.exp(-t*30)*(t<.004?t/.004:1);
-        }
+        for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;d[i]=(Math.random()*2-1)*Math.exp(-t*30)*(t<.004?t/.004:1);}
         const src=ctx.createBufferSource(); src.buffer=buf;
         const g=ctx.createGain(); g.gain.setValueAtTime(.8,now); g.gain.exponentialRampToValueAtTime(.001,now+.25);
         const lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=1200;
         src.connect(lp); lp.connect(g); g.connect(ctx.destination); src.start(now);
         break;
       }
-
-      case 'reload': { // Click-clack reload sound
-        [0, .12, .35, .55].forEach((delay, i) => {
+      case 'reload': {
+        [0,.12,.35,.55].forEach((delay,i)=>{
           const osc=ctx.createOscillator(); const g=ctx.createGain();
-          osc.type='square';
-          osc.frequency.setValueAtTime(i%2===0?380:260, now+delay);
-          osc.frequency.exponentialRampToValueAtTime(i%2===0?200:140, now+delay+.06);
+          osc.type='square'; osc.frequency.setValueAtTime(i%2===0?380:260,now+delay);
+          osc.frequency.exponentialRampToValueAtTime(i%2===0?200:140,now+delay+.06);
           g.gain.setValueAtTime(.18,now+delay); g.gain.exponentialRampToValueAtTime(.001,now+delay+.07);
-          osc.connect(g); g.connect(ctx.destination);
-          osc.start(now+delay); osc.stop(now+delay+.07);
+          osc.connect(g); g.connect(ctx.destination); osc.start(now+delay); osc.stop(now+delay+.07);
         });
         break;
       }
-
-      case 'empty': { // Dry click — no ammo
+      case 'empty': {
         const osc=ctx.createOscillator(); const g=ctx.createGain();
         osc.type='square'; osc.frequency.value=180;
         g.gain.setValueAtTime(.12,now); g.gain.exponentialRampToValueAtTime(.001,now+.04);
         osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now+.04);
         break;
       }
-
-      case 'hit': { // Enemy hit — meaty thud
+      case 'hit': {
         const buf=ctx.createBuffer(1,ctx.sampleRate*.08,ctx.sampleRate);
         const d=buf.getChannelData(0);
-        for(let i=0;i<d.length;i++){
-          const t=i/ctx.sampleRate;
-          d[i]=(Math.random()*2-1)*Math.exp(-t*80);
-        }
+        for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;d[i]=(Math.random()*2-1)*Math.exp(-t*80);}
         const src=ctx.createBufferSource(); src.buffer=buf;
         const g=ctx.createGain(); g.gain.setValueAtTime(.5,now);
         const bp=ctx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=500; bp.Q.value=2;
         src.connect(bp); bp.connect(g); g.connect(ctx.destination); src.start(now);
         break;
       }
-
-      case 'headshot': { // Headshot ping
-        const osc=ctx.createOscillator(); const g=ctx.createGain();
-        osc.type='sine'; osc.frequency.setValueAtTime(1200,now); osc.frequency.exponentialRampToValueAtTime(400,now+.12);
-        g.gain.setValueAtTime(.4,now); g.gain.exponentialRampToValueAtTime(.001,now+.12);
-        osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now+.12);
-        break;
-      }
-
-      case 'footstep': { // Soft footstep
+      case 'footstep': {
         const buf=ctx.createBuffer(1,ctx.sampleRate*.06,ctx.sampleRate);
         const d=buf.getChannelData(0);
-        for(let i=0;i<d.length;i++){
-          const t=i/ctx.sampleRate;
-          d[i]=(Math.random()*2-1)*Math.exp(-t*120)*.35;
-        }
+        for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;d[i]=(Math.random()*2-1)*Math.exp(-t*120)*.35;}
         const src=ctx.createBufferSource(); src.buffer=buf;
         const g=ctx.createGain(); g.gain.setValueAtTime(.25,now);
         const lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=400;
         src.connect(lp); lp.connect(g); g.connect(ctx.destination); src.start(now);
         break;
       }
-
-      case 'jump': { // Jump whoosh
+      case 'jump': {
         const osc=ctx.createOscillator(); const g=ctx.createGain();
         osc.type='sine'; osc.frequency.setValueAtTime(180,now); osc.frequency.exponentialRampToValueAtTime(80,now+.15);
         g.gain.setValueAtTime(.2,now); g.gain.exponentialRampToValueAtTime(.001,now+.15);
         osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now+.15);
         break;
       }
-
-      case 'land': { // Landing thud
+      case 'land': {
         const buf=ctx.createBuffer(1,ctx.sampleRate*.1,ctx.sampleRate);
         const d=buf.getChannelData(0);
-        for(let i=0;i<d.length;i++){
-          const t=i/ctx.sampleRate;
-          d[i]=(Math.random()*2-1)*Math.exp(-t*50)*.5;
-        }
+        for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;d[i]=(Math.random()*2-1)*Math.exp(-t*50)*.5;}
         const src=ctx.createBufferSource(); src.buffer=buf;
         const g=ctx.createGain(); g.gain.setValueAtTime(.4,now);
         const lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=300;
         src.connect(lp); lp.connect(g); g.connect(ctx.destination); src.start(now);
         break;
       }
-
-      case 'gun_switch': { // Weapon swap click
-        [0, .07].forEach((delay,i)=>{
+      case 'gun_switch': {
+        [0,.07].forEach((delay,i)=>{
           const osc=ctx.createOscillator(); const g=ctx.createGain();
           osc.type='square'; osc.frequency.value=i===0?440:330;
           g.gain.setValueAtTime(.15,now+delay); g.gain.exponentialRampToValueAtTime(.001,now+delay+.05);
@@ -1360,44 +1547,38 @@ function playSound(type) {
         });
         break;
       }
-
-      case 'scope_in': { // Scope zoom in
+      case 'scope_in': {
         const osc=ctx.createOscillator(); const g=ctx.createGain();
         osc.type='sine'; osc.frequency.setValueAtTime(600,now); osc.frequency.exponentialRampToValueAtTime(900,now+.1);
         g.gain.setValueAtTime(.12,now); g.gain.exponentialRampToValueAtTime(.001,now+.1);
         osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now+.1);
         break;
       }
-
-      case 'scope_out': { // Scope zoom out
+      case 'scope_out': {
         const osc=ctx.createOscillator(); const g=ctx.createGain();
         osc.type='sine'; osc.frequency.setValueAtTime(900,now); osc.frequency.exponentialRampToValueAtTime(500,now+.1);
         g.gain.setValueAtTime(.12,now); g.gain.exponentialRampToValueAtTime(.001,now+.1);
         osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now+.1);
         break;
       }
-
-      case 'damage': { // Player takes damage
+      case 'damage': {
         const osc=ctx.createOscillator(); const g=ctx.createGain();
         osc.type='sawtooth'; osc.frequency.setValueAtTime(120,now); osc.frequency.exponentialRampToValueAtTime(60,now+.12);
         g.gain.setValueAtTime(.25,now); g.gain.exponentialRampToValueAtTime(.001,now+.12);
         osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now+.12);
         break;
       }
-
-      case 'kill': { // Enemy killed — satisfying sound
+      case 'kill': {
         [0,.1,.2].forEach((delay,i)=>{
           const osc=ctx.createOscillator(); const g=ctx.createGain();
-          osc.type='sine';
-          const freqs=[440,554,659];
+          osc.type='sine'; const freqs=[440,554,659];
           osc.frequency.value=freqs[i];
           g.gain.setValueAtTime(.25,now+delay); g.gain.exponentialRampToValueAtTime(.001,now+delay+.12);
           osc.connect(g); g.connect(ctx.destination); osc.start(now+delay); osc.stop(now+delay+.12);
         });
         break;
       }
-
-      case 'zone_warn': { // Zone shrink alert
+      case 'zone_warn': {
         [0,.3,.6].forEach(delay=>{
           const osc=ctx.createOscillator(); const g=ctx.createGain();
           osc.type='sine'; osc.frequency.setValueAtTime(880,now+delay); osc.frequency.exponentialRampToValueAtTime(440,now+delay+.2);
@@ -1406,133 +1587,94 @@ function playSound(type) {
         });
         break;
       }
+      // ── NEW: MEDIKIT HEAL SOUND ──
+      case 'medikit_use': {
+        // Satisfying ascending heal chime
+        [0,.08,.18,.3,.44].forEach((delay,i)=>{
+          const osc=ctx.createOscillator(); const g=ctx.createGain();
+          osc.type='sine';
+          const notes=[523,659,784,1046,1318]; // C5,E5,G5,C6,E6
+          osc.frequency.value=notes[i];
+          g.gain.setValueAtTime(.22,now+delay); g.gain.exponentialRampToValueAtTime(.001,now+delay+.18);
+          osc.connect(g); g.connect(ctx.destination); osc.start(now+delay); osc.stop(now+delay+.18);
+        });
+        // Heartbeat-like low pulse
+        const osc2=ctx.createOscillator(); const g2=ctx.createGain();
+        osc2.type='sine'; osc2.frequency.setValueAtTime(80,now); osc2.frequency.exponentialRampToValueAtTime(40,now+.4);
+        g2.gain.setValueAtTime(.18,now); g2.gain.exponentialRampToValueAtTime(.001,now+.4);
+        osc2.connect(g2); g2.connect(ctx.destination); osc2.start(now); osc2.stop(now+.4);
+        break;
+      }
     }
-  } catch(e) { /* Silently fail if audio not available */ }
+  } catch(e) { /* silent */ }
 }
 
-// Footstep timer
 let footstepTimer = 0;
 
 // ================================================================
 //  GUNS CONFIG
 // ================================================================
 const GUNS = [
-  {
-    id:0, name:'M4A1', type:'ar',
-    damage:22, spread:0,
-    ammoMax:30, ammoReserve:120,
-    reloadTime:2.0, fireRate:0.1,
-    bulletSpeed:90, bulletLife:.55, bulletSize:.022,
-    bulletColor:0xffaa00,
-    scopeMult:2.5, scopeLabel:'×2.5',
-    recoil:.045,
-    // model params
-    bodyW:.08,bodyH:.09,bodyD:.45,
-    barrelLen:.35, barrelR:.018,
-    stockD:.2, magH:.12, magD:.06,
-    scopeLen:.14, scopeR:.025,
-    color:{body:0x1a1a1a,stock:0x5C3A1A,mag:0x333333}
-  },
-  {
-    id:1, name:'AWM', type:'sniper',
-    damage:85, spread:0,
-    ammoMax:5, ammoReserve:25,
-    reloadTime:4.0, fireRate:1.2,
-    bulletSpeed:150, bulletLife:.8, bulletSize:.028,
-    bulletColor:0xffffff,
-    scopeMult:6.0, scopeLabel:'×6',
-    recoil:.12,
-    bodyW:.065,bodyH:.08,bodyD:.60,
-    barrelLen:.55, barrelR:.015,
-    stockD:.28, magH:.09, magD:.05,
-    scopeLen:.24, scopeR:.032,
-    color:{body:0x2a2a2a,stock:0x8B7355,mag:0x222222}
-  },
-  {
-    id:2, name:'SPAS-12', type:'shotgun',
-    damage:60, spread:8, pellets:6,
-    ammoMax:8, ammoReserve:40,
-    reloadTime:3.0, fireRate:0.7,
-    bulletSpeed:75, bulletLife:.4, bulletSize:.035,
-    bulletColor:0xff6600,
-    scopeMult:1.5, scopeLabel:'×1.5',
-    recoil:.09,
-    bodyW:.10,bodyH:.10,bodyD:.40,
-    barrelLen:.28, barrelR:.028,
-    stockD:.18, magH:.08, magD:.08,
-    scopeLen:.10, scopeR:.020,
-    color:{body:0x3a3a3a,stock:0x4a3020,mag:0x555555}
-  }
+  {id:0,name:'M4A1',type:'ar',damage:22,spread:0,ammoMax:30,ammoReserve:120,reloadTime:2.0,fireRate:0.1,bulletSpeed:90,bulletLife:.55,bulletSize:.022,bulletColor:0xffaa00,scopeMult:2.5,scopeLabel:'×2.5',recoil:.045,bodyW:.08,bodyH:.09,bodyD:.45,barrelLen:.35,barrelR:.018,stockD:.2,magH:.12,magD:.06,scopeLen:.14,scopeR:.025,color:{body:0x1a1a1a,stock:0x5C3A1A,mag:0x333333}},
+  {id:1,name:'AWM',type:'sniper',damage:85,spread:0,ammoMax:5,ammoReserve:25,reloadTime:4.0,fireRate:1.2,bulletSpeed:150,bulletLife:.8,bulletSize:.028,bulletColor:0xffffff,scopeMult:6.0,scopeLabel:'×6',recoil:.12,bodyW:.065,bodyH:.08,bodyD:.60,barrelLen:.55,barrelR:.015,stockD:.28,magH:.09,magD:.05,scopeLen:.24,scopeR:.032,color:{body:0x2a2a2a,stock:0x8B7355,mag:0x222222}},
+  {id:2,name:'SPAS-12',type:'shotgun',damage:60,spread:8,pellets:6,ammoMax:8,ammoReserve:40,reloadTime:3.0,fireRate:0.7,bulletSpeed:75,bulletLife:.4,bulletSize:.035,bulletColor:0xff6600,scopeMult:1.5,scopeLabel:'×1.5',recoil:.09,bodyW:.10,bodyH:.10,bodyD:.40,barrelLen:.28,barrelR:.028,stockD:.18,magH:.08,magD:.08,scopeLen:.10,scopeR:.020,color:{body:0x3a3a3a,stock:0x4a3020,mag:0x555555}}
 ];
-
 let currentGunIdx = 0;
 let currentGun    = GUNS[0];
 let isScoped      = false;
 let normalFOV     = 72;
 
 // ================================================================
-//  WEAPON MODEL — rebuilt per gun
+//  WEAPON MODEL
 // ================================================================
 function buildWeapon(){
   if(weaponGroup){ camera.remove(weaponGroup); weaponGroup=null; }
   weaponGroup=new THREE.Group();
-  const g = currentGun;
+  const g=currentGun;
   const D=new THREE.MeshLambertMaterial({color:g.color.body});
   const W=new THREE.MeshLambertMaterial({color:g.color.stock});
   const S=new THREE.MeshLambertMaterial({color:0xc8a882});
   const G=new THREE.MeshLambertMaterial({color:g.color.mag});
-
-  // Body
   const body=new THREE.Mesh(new THREE.BoxGeometry(g.bodyW,g.bodyH,g.bodyD),D);
   body.position.set(0,0,-g.bodyD/2+.05); weaponGroup.add(body);
-  // Barrel
   const brl=new THREE.Mesh(new THREE.CylinderGeometry(g.barrelR,g.barrelR,g.barrelLen,8),D);
   brl.rotation.x=Math.PI/2; brl.position.set(0,.005,-(g.bodyD+g.barrelLen/2));
   weaponGroup.add(brl);
-  // Muzzle tip
   const tip=new THREE.Mesh(new THREE.CylinderGeometry(g.barrelR*1.6,g.barrelR*1.2,.06,8),G);
   tip.rotation.x=Math.PI/2; tip.position.set(0,.005,-(g.bodyD+g.barrelLen+.03));
   weaponGroup.add(tip);
-  // Shotgun — double barrel
   if(g.type==='shotgun'){
     const brl2=new THREE.Mesh(new THREE.CylinderGeometry(g.barrelR,g.barrelR,g.barrelLen,8),D);
     brl2.rotation.x=Math.PI/2; brl2.position.set(.04,.005,-(g.bodyD+g.barrelLen/2));
     weaponGroup.add(brl2);
   }
-  // Stock
   const stk=new THREE.Mesh(new THREE.BoxGeometry(g.bodyW*.9,g.bodyH*.8,g.stockD),W);
   stk.position.set(0,-.01,.05); weaponGroup.add(stk);
-  // Magazine
   const mag=new THREE.Mesh(new THREE.BoxGeometry(.05,g.magH,g.magD),G);
   mag.position.set(0,-g.magH/2-g.bodyH/2,-g.bodyD*.3); weaponGroup.add(mag);
-  // Scope
   const scp=new THREE.Mesh(new THREE.CylinderGeometry(g.scopeR,g.scopeR,g.scopeLen,8),D);
   scp.rotation.x=Math.PI/2; scp.position.set(0,g.bodyH/2+g.scopeR,-g.bodyD*.35);
   weaponGroup.add(scp);
-  // Scope lens (front)
   const lens=new THREE.Mesh(new THREE.CylinderGeometry(g.scopeR*.8,g.scopeR*.8,.02,8),
     new THREE.MeshLambertMaterial({color:0x2288aa,transparent:true,opacity:.8}));
   lens.rotation.x=Math.PI/2; lens.position.set(0,g.bodyH/2+g.scopeR,-(g.bodyD*.35+g.scopeLen/2+.01));
   weaponGroup.add(lens);
-  // Hand/grip
   const hand=new THREE.Mesh(new THREE.BoxGeometry(.07,.13,.07),S);
   hand.position.set(.05,-.13,-.05); weaponGroup.add(hand);
   for(let i=0;i<4;i++){
     const f=new THREE.Mesh(new THREE.BoxGeometry(.022,.06,.022),S);
     f.position.set(.02+i*.025,-.16,-.1); weaponGroup.add(f);
   }
-  // Muzzle flash
   const fl=new THREE.Mesh(new THREE.SphereGeometry(.07,6,6),
     new THREE.MeshBasicMaterial({color:0xffaa00,transparent:true,opacity:0}));
   fl.position.set(0,.005,-(g.bodyD+g.barrelLen+.08));
   window.mFlash=fl; weaponGroup.add(fl);
-
   weaponGroup.position.set(.25,-.28,-.5);
   camera.add(weaponGroup); scene.add(camera);
 }
 
 // ================================================================
-//  ENEMIES (Single Player only)
+//  ENEMIES (Single Player)
 // ================================================================
 function spawnEnemies(){
   ['Shadow','Ghost','Viper','Storm','Blaze','Frost','Reaper','Wolf','Hunter','Phantom','Cobra','Ace'].forEach((name,i)=>{
@@ -1569,6 +1711,7 @@ function setupControls(){
     keys[e.code]=true;
     if(e.code==='KeyR') doReload();
     if(e.code==='Space') doJump();
+    if(e.code==='KeyH') useMedikit();  // ← H key for medikit
     if(e.code==='Digit1') switchGun(0);
     if(e.code==='Digit2') switchGun(1);
     if(e.code==='Digit3') switchGun(2);
@@ -1576,9 +1719,11 @@ function setupControls(){
     if(e.code==='KeyQ'||e.code==='KeyF') toggleScope();
     if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) e.preventDefault();
   });
-  window.addEventListener('keyup',e=>keys[e.code]=false);
+  window.addEventListener('keyup',e=>{
+    keys[e.code]=false;
+    // Cancel medikit if key released mid-use? (optional — we keep it going for UX)
+  });
 
-  // Exit button
   document.getElementById('btn-exit').addEventListener('click', exitGame);
   document.getElementById('btn-exit').addEventListener('touchstart',e=>{e.stopPropagation();e.preventDefault();exitGame();},{passive:false});
 
@@ -1613,6 +1758,10 @@ function setupControls(){
   document.getElementById('btn-jump').addEventListener('click',()=>doJump());
   document.getElementById('btn-crouch').addEventListener('touchstart',e=>{e.stopPropagation();e.preventDefault();crouching=!crouching;},{passive:false});
   document.getElementById('btn-crouch').addEventListener('click',()=>crouching=!crouching);
+
+  // Medikit button — touch support
+  const btnMed = document.getElementById('btn-medikit');
+  btnMed.addEventListener('touchstart',e=>{e.stopPropagation();e.preventDefault();useMedikit();},{passive:false});
 
   setupJoystick(document.getElementById('joy-left-area'),  document.getElementById('joy-left-knob'),  130, d=>moveVec=d);
   setupJoystick(document.getElementById('joy-right-area'), document.getElementById('joy-right-knob'), 130, d=>lookVec=d);
@@ -1661,6 +1810,7 @@ function setupJoystick(area, knob, size, callback){
 function doJump(){ if(grounded){jumpVel=6;grounded=false;playSound('jump');} }
 function doReload(){
   if(reloading||player.ammoRes<=0||player.ammo>=currentGun.ammoMax) return;
+  if(usingMedikit) cancelMedikit();
   reloading=true; reloadT=0;
   playSound('reload');
   document.getElementById('rl-wrap').style.display='block';
@@ -1670,9 +1820,6 @@ function doReload(){
 // ================================================================
 //  MAIN LOOP
 // ================================================================
-// ================================================================
-//  GAME START FUNCTIONS
-// ================================================================
 function startSingle() {
   gameMode = 'single';
   document.getElementById('startscreen').style.display = 'none';
@@ -1680,7 +1827,6 @@ function startSingle() {
 }
 
 function initGame() {
-  // Reset gun state
   currentGunIdx=0; currentGun=GUNS[0];
   gunAmmo=[30,5,8]; gunAmmoRes=[120,25,40];
   player.ammo=gunAmmo[0]; player.ammoRes=gunAmmoRes[0];
@@ -1692,6 +1838,9 @@ function initGame() {
   zoneRadius=80; zoneShrinking=false;
   gameStarted=false; gameOver=false;
   colorIdx=0;
+  // Init medikit
+  medikitCount = 2; usingMedikit = false; medikitUseT = 0;
+  updateMedikitUI();
 
   initThree();
   camera.fov=normalFOV; camera.updateProjectionMatrix();
@@ -1702,20 +1851,16 @@ function initGame() {
   if(gameMode==='single') {
     spawnEnemies();
     document.getElementById('alive-wrap').style.display='block';
-    // Zone shrinks after 25s
     setTimeout(()=>{
       zoneShrinking=true;
       document.getElementById('zone-warn').style.display='block';
       playSound('zone_warn');
     }, 25000);
-    setTimeout(() => playSound('zone_warn'), 25000);
   } else {
-    // Multiplayer HUD
     document.getElementById('alive-wrap').style.display='none';
     document.getElementById('mp-tag').style.display='block';
     document.getElementById('connected-badge').style.display='block';
     document.getElementById('ping-box').style.display='block';
-    // Broadcast position every 50ms
     if(updateInterval) clearInterval(updateInterval);
     updateInterval = setInterval(broadcastMyPosition, 50);
     setInterval(sendPing, 2000);
@@ -1725,6 +1870,7 @@ function initGame() {
   gameStarted=true;
   animate();
   updateHUD();
+  updateMedikitUI();
 }
 
 function animate(){
@@ -1739,7 +1885,8 @@ function animate(){
     updateWeaponAnim(dt);
     if(gameMode==='single') updateZone(dt);
     if(reloading) updateReload(dt);
-    if(shooting&&shootCooldown<=0&&!reloading){doShoot();shootCooldown=currentGun.fireRate;}
+    if(usingMedikit) updateMedikit(dt);  // ← Medikit update
+    if(shooting&&shootCooldown<=0&&!reloading&&!usingMedikit){doShoot();shootCooldown=currentGun.fireRate;}
     if(shootCooldown>0) shootCooldown-=dt;
     updateMinimap();
   }
@@ -1784,6 +1931,8 @@ function updatePlayer(dt){
     weaponBob+=dt*8;
     footstepTimer-=dt;
     if(footstepTimer<=0 && grounded){ playSound('footstep'); footstepTimer=.38; }
+    // Movement cancels medikit
+    if(usingMedikit && (Math.abs(mx)>.5||Math.abs(mz)>.5)) cancelMedikit();
   } else { footstepTimer=0; }
 
   const tH=crouching?1.0:1.7;
@@ -1792,9 +1941,9 @@ function updatePlayer(dt){
     if(camera.position.y<=tH){camera.position.y=tH; if(!grounded) playSound('land'); grounded=true;jumpVel=0;}
   } else camera.position.y=tH;
 
-  // Zone damage (single player only)
   if(gameMode==='single' && Math.sqrt(camera.position.x**2+camera.position.z**2)>zoneRadius){
     player.hp-=6*dt; flashDmg();
+    cancelMedikit();
     document.getElementById('zone-warn').style.display='block';
     if(player.hp<=0) killPlayer(); updateHUD();
   }
@@ -1813,21 +1962,17 @@ function updateWeaponAnim(dt){
 function switchGun(idx){
   if(reloading){ reloading=false; document.getElementById('rl-wrap').style.display='none'; }
   if(isScoped) toggleScope();
+  if(usingMedikit) cancelMedikit();
   currentGunIdx=idx; currentGun=GUNS[idx];
-  // Update slot highlights
   document.querySelectorAll('.gslot').forEach((el,i)=>el.classList.toggle('active',i===idx));
   playSound('gun_switch');
-  // Rebuild weapon model
   buildWeapon();
-  // Load ammo for this gun (track per-gun ammo)
   player.ammo    = gunAmmo[idx];
   player.ammoRes = gunAmmoRes[idx];
-  // Update fire rate
   shootCooldown=0;
   updateHUD();
 }
 
-// Per-gun ammo tracking
 let gunAmmo    = [30,  5,  8];
 let gunAmmoRes = [120, 25, 40];
 
@@ -1841,19 +1986,13 @@ function toggleScope(){
   const btn=document.getElementById('btn-scope');
   document.getElementById('scope-label').textContent=currentGun.scopeLabel;
   if(isScoped){
-    playSound('scope_in');
-    ov.style.display='block';
-    btn.classList.add('scoped');
-    camera.fov=normalFOV/currentGun.scopeMult;
-    camera.updateProjectionMatrix();
+    playSound('scope_in'); ov.style.display='block'; btn.classList.add('scoped');
+    camera.fov=normalFOV/currentGun.scopeMult; camera.updateProjectionMatrix();
     if(currentGun.type==='sniper') weaponGroup.visible=false;
     document.getElementById('xhair').style.display='none';
   } else {
-    playSound('scope_out');
-    ov.style.display='none';
-    btn.classList.remove('scoped');
-    camera.fov=normalFOV;
-    camera.updateProjectionMatrix();
+    playSound('scope_out'); ov.style.display='none'; btn.classList.remove('scoped');
+    camera.fov=normalFOV; camera.updateProjectionMatrix();
     weaponGroup.visible=true;
     document.getElementById('xhair').style.display='block';
   }
@@ -1863,51 +2002,10 @@ function toggleScope(){
 //  EXIT GAME
 // ================================================================
 function exitGame(){
-  // Confirm
   if(!confirm('Exit to main menu?')) return;
-  // Stop game
-  gameStarted=false; gameOver=false; gameMode=null;
-  isScoped=false; camera.fov=normalFOV; camera.updateProjectionMatrix();
-  // Reset scope
-  document.getElementById('scope-overlay').style.display='none';
-  document.getElementById('xhair').style.display='block';
-  // Reset player
-  player.hp=100; player.shield=70; player.kills=0; player.alive=true;
-  // Reset guns
-  gunAmmo=[30,5,8]; gunAmmoRes=[120,25,40];
-  currentGunIdx=0; currentGun=GUNS[0];
-  player.ammo=gunAmmo[0]; player.ammoRes=gunAmmoRes[0];
-  // Reset game state
-  zoneRadius=80; zoneShrinking=false;
-  bullets=[]; eBullets=[]; particles=[]; enemies=[];
-  reloading=false; grounded=true; crouching=false;
-  // Exit pointer lock
-  if(document.pointerLockElement) document.exitPointerLock();
-  // Hide HUD elements
-  document.getElementById('mp-tag').style.display='none';
-  document.getElementById('connected-badge').style.display='none';
-  document.getElementById('ping-box').style.display='none';
-  document.getElementById('alive-wrap').style.display='block';
-  document.getElementById('zone-warn').style.display='none';
-  document.getElementById('rl-wrap').style.display='none';
-  document.getElementById('endscreen').style.display='none';
-  // Clear scene
-  if(scene){ while(scene.children.length>0) scene.remove(scene.children[0]); scene=null; }
-  if(renderer){ renderer.dispose(); }
-  // Remove room from active list
-  if(myRoomCode) _removeRoomFromLS(myRoomCode);
-  // Clear multiplayer
-  if(updateInterval){ clearInterval(updateInterval); updateInterval=null; }
-  Object.values(peerConnections).forEach(c=>c.close&&c.close());
-  Object.keys(peerConnections).forEach(k=>delete peerConnections[k]);
-  Object.keys(remotePlayers).forEach(k=>delete remotePlayers[k]);
-  myRoomCode=null; myPeerId=null;
-  if(myPeer && !myPeer.destroyed){ myPeer.destroy(); myPeer=null; }
-  // Show main menu
+  _fullCleanup();
   document.getElementById('startscreen').style.display='flex';
   document.getElementById('mpscreen').style.display='none';
-  // Reload page for clean state
-  location.reload();
 }
 
 // ================================================================
@@ -1915,43 +2013,29 @@ function exitGame(){
 // ================================================================
 function doShoot(){
   if(reloading||player.ammo<=0||!player.alive) return;
+  if(usingMedikit) cancelMedikit();
   const g=currentGun;
-
   player.ammo--; gunAmmo[currentGunIdx]=player.ammo; updateHUD();
-  // Play shoot sound
   const sndMap={ar:'shoot_ar',sniper:'shoot_sniper',shotgun:'shoot_shotgun'};
   playSound(sndMap[g.type]||'shoot_ar');
   window.mFlash.material.opacity=1; setTimeout(()=>window.mFlash.material.opacity=0,55);
   weaponGroup.position.z+=g.recoil;
-
   const dirBase=new THREE.Vector3(); camera.getWorldDirection(dirBase);
   const ori=camera.position.clone(); ori.y-=.04;
-
-  // Shotgun fires multiple pellets
   const pellets=g.pellets||1;
   for(let p=0;p<pellets;p++){
     const dir=dirBase.clone();
     if(g.spread>0){
       const spread=g.spread*(Math.PI/180);
-      dir.x+=(Math.random()-.5)*spread;
-      dir.y+=(Math.random()-.5)*spread*0.5;
-      dir.z+=(Math.random()-.5)*spread;
+      dir.x+=(Math.random()-.5)*spread; dir.y+=(Math.random()-.5)*spread*0.5; dir.z+=(Math.random()-.5)*spread;
       dir.normalize();
     }
-    const b={
-      pos:ori.clone(), dir,
-      speed:g.bulletSpeed, life:g.bulletLife,
-      damage:g.damage,
-      mesh:mkBulletMesh(g.bulletColor, g.bulletSize*(1+p*.005))
-    };
+    const b={pos:ori.clone(),dir,speed:g.bulletSpeed,life:g.bulletLife,damage:g.damage,mesh:mkBulletMesh(g.bulletColor,g.bulletSize*(1+p*.005))};
     b.mesh.position.copy(ori); scene.add(b.mesh); bullets.push(b);
   }
-
-  // Multiplayer: broadcast visual bullet + do immediate hitscan for PvP damage
   if(gameMode==='multi'){
-    const bd={type:'bullet', ox:ori.x,oy:ori.y,oz:ori.z, dx:dirBase.x,dy:dirBase.y,dz:dirBase.z, speed:g.bulletSpeed,life:g.bulletLife};
+    const bd={type:'bullet',ox:ori.x,oy:ori.y,oz:ori.z,dx:dirBase.x,dy:dirBase.y,dz:dirBase.z,speed:g.bulletSpeed,life:g.bulletLife};
     Object.values(peerConnections).forEach(c=>{if(c.open)c.send(bd);});
-    // Hitscan — check if any remote player was hit right now
     checkPvPHit(ori, dirBase.clone().normalize(), g.damage);
   }
   if(player.ammo===0) doReload();
@@ -1970,11 +2054,7 @@ function updateBullets(dt){
     b.pos.add(b.dir.clone().multiplyScalar(b.speed*dt));
     b.mesh.position.copy(b.pos);
     if(b.life<=0){scene.remove(b.mesh);bullets.splice(i,1);continue;}
-
-    // Visual-only bullets (remote player bullets) — no damage logic here
     if(b.visualOnly) continue;
-
-    // Local bullets — check AI enemies only
     let hit=false;
     for(let j=enemies.length-1;j>=0;j--){
       const e=enemies[j]; if(!e.alive) continue;
@@ -1985,14 +2065,13 @@ function updateBullets(dt){
       }
     }
   }
-
-  // ── ENEMY bullets → local player (single player) ──
   for(let i=eBullets.length-1;i>=0;i--){
     const b=eBullets[i]; b.life-=dt;
     b.pos.add(b.dir.clone().multiplyScalar(b.speed*dt));
     b.mesh.position.copy(b.pos);
     if(b.life<=0){scene.remove(b.mesh);eBullets.splice(i,1);continue;}
     if(b.pos.distanceTo(camera.position)<.7){
+      cancelMedikit();  // Hit cancels healing
       player.hp-=10; player.shield=Math.max(0,player.shield-4);
       flashDmg(); if(player.hp<=0) killPlayer(); updateHUD();
       scene.remove(b.mesh); eBullets.splice(i,1);
@@ -2061,7 +2140,7 @@ function updateReload(dt){
 }
 
 // ================================================================
-//  ZONE (Single Player only)
+//  ZONE (Single Player)
 // ================================================================
 function updateZone(dt){
   if(zoneShrinking&&zoneRadius>12){
@@ -2081,16 +2160,13 @@ function updateMinimap(){
     ctx.strokeStyle='rgba(50,150,255,.85)'; ctx.lineWidth=2;
     ctx.beginPath(); ctx.arc(W/2,W/2,zoneRadius*sc,0,Math.PI*2); ctx.stroke();
   }
-  // AI enemies (red)
   enemies.forEach(e=>{
     if(!e.alive) return;
     ctx.fillStyle='#ff3333'; ctx.beginPath(); ctx.arc(W/2+e.mesh.position.x*sc,W/2+e.mesh.position.z*sc,2.5,0,Math.PI*2); ctx.fill();
   });
-  // Remote players (blue)
   Object.values(remotePlayers).forEach(rp=>{
     ctx.fillStyle='#44aaff'; ctx.beginPath(); ctx.arc(W/2+rp.mesh.position.x*sc,W/2+rp.mesh.position.z*sc,3,0,Math.PI*2); ctx.fill();
   });
-  // Self (green)
   const px=W/2+camera.position.x*sc, py=W/2+camera.position.z*sc;
   ctx.fillStyle='#44ff88'; ctx.beginPath(); ctx.arc(px,py,4,0,Math.PI*2); ctx.fill();
   ctx.strokeStyle='#44ff88'; ctx.lineWidth=2;
@@ -2101,11 +2177,25 @@ function updateMinimap(){
 //  GAME EVENTS
 // ================================================================
 function killEnemy(e){
-  e.alive=false; player.kills++; scene.remove(e.mesh); addKillFeed(e.name);
+  e.alive=false; player.kills++; scene.remove(e.mesh);
+  // Single player: earn medikit per kill
+  medikitCount++;
+  updateMedikitUI();
+  addKillFeed('💀 ' + e.name + ' killed! Got 1 Medikit!');
   playSound('kill'); updateHUD();
   if(enemies.filter(x=>x.alive).length===0) setTimeout(()=>showEnd(true),600);
 }
-function killPlayer(){ player.alive=false; gameOver=true; showEnd(false); }
+
+function killPlayer(){
+  player.alive=false;
+  if(gameMode==='multi') {
+    showMpDeathScreen();  // MP: show respawn screen
+  } else {
+    gameOver=true;
+    showEnd(false);       // SP: game over
+  }
+}
+
 function showEnd(won){
   const s=document.getElementById('endscreen'); s.style.display='flex';
   document.getElementById('end-title').textContent=won?'WINNER!':'ELIMINATED';
@@ -2116,7 +2206,7 @@ function showHitMark(){ const h=document.getElementById('hitmark'); h.classList.
 function flashDmg(){ playSound('damage'); const d=document.getElementById('dmg'); d.style.opacity='1'; setTimeout(()=>d.style.opacity='0',200); }
 function addKillFeed(name){
   const kf=document.getElementById('killfeed');
-  const d=document.createElement('div'); d.className='kfeed'; d.textContent='You killed '+name; kf.appendChild(d); setTimeout(()=>d.remove(),3000);
+  const d=document.createElement('div'); d.className='kfeed'; d.textContent=name; kf.appendChild(d); setTimeout(()=>d.remove(),3000);
 }
 function updateHUD(){
   const hp=Math.max(0,player.hp);
@@ -2130,13 +2220,12 @@ function updateHUD(){
   if(gameMode==='single') document.getElementById('alive-num').textContent=enemies.filter(e=>e.alive).length+1;
 }
 
-// ────────────────────────────────────────────────
+// ════════════════════════════════════════════════════
 // Final overrides
-// ────────────────────────────────────────────────
+// ════════════════════════════════════════════════════
 window.showMpLobby = function() {
   document.getElementById('startscreen').style.display='none';
   document.getElementById('mpscreen').style.display='flex';
-  // Reset lobby UI — do NOT create room yet
   document.getElementById('room-code-box').textContent='------';
   document.getElementById('copy-hint').textContent='Room code will appear after you start';
   document.getElementById('mp-status').textContent='';
@@ -2144,7 +2233,7 @@ window.showMpLobby = function() {
   document.getElementById('join-status').textContent='';
   document.getElementById('join-input').value='';
   document.getElementById('btn-do-join').disabled=false;
-  // Destroy any stale peer
+  document.getElementById('btn-create-start').disabled=false;
   if(myPeer && !myPeer.destroyed){ myPeer.destroy(); myPeer=null; }
   myRoomCode=null;
   refreshRoomList();
@@ -2162,30 +2251,21 @@ window.joinRoom = function() {
       document.getElementById('btn-do-join').disabled = false;
       return;
     }
-    // Destroy existing peer (host peer created by initPeerWithCode)
     if(myPeer && !myPeer.destroyed) { myPeer.destroy(); myPeer=null; }
-
     const joinPeer = new Peer(undefined, {
       host:'0.peerjs.com', port:443, path:'/', secure:true,
       config:{iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]}
     });
-
     joinPeer.on('open', id => {
-      myPeerId = id;
-      myPeer   = joinPeer;
-      isHost   = false;
-
+      myPeerId = id; myPeer = joinPeer; isHost = false;
       document.getElementById('join-status').textContent='🔄 Reaching host '+input+'...';
       const conn = myPeer.connect(input, {reliable:true, serialization:'json'});
       hostConn = conn;
-
       let opened = false;
       conn.on('open', () => {
         opened = true;
-        // Auto-start immediately — joiner enters game right away
         document.getElementById('join-status').textContent='✅ Connected! Entering game...';
         setupConn(conn, false);
-        // Enter game after short delay so setupConn can finish
         setTimeout(() => {
           gameMode = 'multi';
           document.getElementById('mpscreen').style.display = 'none';
@@ -2203,12 +2283,10 @@ window.joinRoom = function() {
         }
       }, 10000);
     });
-
     joinPeer.on('error', e => {
       document.getElementById('join-status').textContent='⚠ Error: '+e.type;
       document.getElementById('btn-do-join').disabled = false;
     });
-    // Accept connections from other peers in the room
     joinPeer.on('connection', conn => setupConn(conn, false));
   }
 
